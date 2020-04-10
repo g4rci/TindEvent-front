@@ -11,9 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.logo img{
+  position: absolute;
+  margin: 16px;
+}
+.logo p{
+  position: absolute;
+  margin: 15px 60px;
+  font-family: 'Monoton', cursive;
+  font-size: 25px;
+}
 
 .navbar {
-  background-color: #112f2e;
+  background-color: #BDD4E1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 65px;
+}
+button{
+  padding: 8px 16px;
+  margin: 15px 15px 15px 0;
+  border-radius: 5px;
+  background-color: #F29F06;
+  border: none;
+  color: white;
+  font-size: 15px;
 }
 
 /* Barra de busqueda */
