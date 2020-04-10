@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import css from "../index.css"
 
 class Navbar extends Component {
   render() {
@@ -8,7 +9,13 @@ class Navbar extends Component {
     return (
       <nav className='navbar'>
         <Link to={"/"} id='home-btn'>
-          <h4>Home</h4>
+        <div className='navBar'>
+                <nav className="navbar navbar-dark bg-primary">
+                    <a className="navbar-brand" href="/">
+                    <img src="https://image.flaticon.com/icons/png/512/306/306173.png" width="30" height="30" alt=""/>
+                    </a>
+                </nav>
+        </div>
         </Link>
         {isLoggedin ? (
           <>
