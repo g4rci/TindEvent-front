@@ -6,6 +6,18 @@ class Private extends Component {
     return (
       <div>
         <h1>Welcome {this.props.user.username}</h1>
+        <div>
+          <section className="carrousel buscador">
+
+          </section>
+          <section className="eventosfamosos">
+
+          </section>
+          <section className="misGrupos">
+            
+          </section>
+
+        </div>
       </div>
     );
   }
