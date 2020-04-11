@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
+import AllEvents from "../components/AllEvents"
 
 class Private extends Component {
   render() {
@@ -8,7 +9,7 @@ class Private extends Component {
         <h1>Welcome {this.props.user.username}</h1>
         <div>
           <section className="carrousel buscador">
-
+          <AllEvents />
           </section>
           <section className="eventosfamosos">
 

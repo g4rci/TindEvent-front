@@ -17,12 +17,12 @@ class Navbar extends Component {
                     </a>
                 </nav>
         
-        </Link>
-                    <p>TindEvent</p>
+      </Link>
+      <p>TindEvent</p>
       <nav  className='navbar'>
         {isLoggedin ? (
           <>
-            <p className='navbar-user'>username: {user.username}</p>
+            <p>Wecome: {user.username}</p>
             <button className='navbar-button' onClick={logout}>
               Logout
             </button>
