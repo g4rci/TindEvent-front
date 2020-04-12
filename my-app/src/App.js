@@ -9,6 +9,7 @@ import Private from "./pages/Private";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
             <PrivateRoute exact path='/profile' component={Profile} />
+            <PrivateRoute exact path='/editprofile' component={EditProfile} />
           </Switch>
         </div>
       </AuthProvider>
