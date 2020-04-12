@@ -3,23 +3,26 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import css from "../index.css"
 
+
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
-      <nav className='navbar'>
-        <Link to={"/"} id='home-btn'>
-        <div className='navBar'>
-                <nav className="navbar navbar-dark bg-primary">
-                    <a className="navbar-brand" href="/">
-                    <img src="https://image.flaticon.com/icons/png/512/306/306173.png" width="30" height="30" alt=""/>
+      <div className="logo">
+      <Link to={"/"} id='home-btn'>
+        
+                <nav>
+                    <a href="/">
+                    <img src="./logo2.jpg" width="30" height="30" alt=""/>
                     </a>
                 </nav>
-        </div>
-        </Link>
+        
+      </Link>
+      <p>TindEvent</p>
+      <nav  className='navbar'>
         {isLoggedin ? (
           <>
-            <p className='navbar-user'>username: {user.username}</p>
+            <p>Wecome: {user.username}</p>
             <button className='navbar-button' onClick={logout}>
               Logout
             </button>
@@ -36,6 +39,7 @@ class Navbar extends Component {
           </>
         )}
       </nav>
+      </div>
     );
   }
 }

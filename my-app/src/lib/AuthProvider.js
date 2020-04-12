@@ -45,7 +45,7 @@ class AuthProvider extends React.Component {
   }
 
   signup = (user) => {
-    const { picture, username, email, password, location, birthDate, bio } = user;
+    const { picture, username, email, password, location, birthDate, bio  } = user;
 
     auth
       .signup({ picture, username, email, password, location, birthDate, bio })

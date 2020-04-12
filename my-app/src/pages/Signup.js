@@ -24,16 +24,13 @@ class Signup extends Component {
         <h1>Sign Up</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-        <label>Elige tu foto de perfil:</label>
+        <label>Photo:</label>
           <input
             type='text'
             name='picture'
             value={picture}
             alt='Profile picture'
             onChange={this.handleChange}/>
-            <div>
-            {/* <img src={this.state.file}/> */}
-          </div>
           <br></br>
           <label>Username:</label>
           <input
