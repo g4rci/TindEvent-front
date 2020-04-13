@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 import { withAuth } from "../lib/AuthProvider";
 import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
@@ -46,9 +45,8 @@ class Profile extends Component {
           <>
             {!this.state.isLoading ? (
               <div>
-                <div className="">
+                <div className="profileCard">
                   <img src={this.state.picture} width="210px"></img>
-                </div>
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.location}</p>
@@ -57,6 +55,7 @@ class Profile extends Component {
                 <button className="profileLogoutBtn" onClick={logout}>
                   Logout
                 </button>
+                </div>
               </div>
             ) : (
               <h1>Loading</h1>
