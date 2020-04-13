@@ -7,7 +7,7 @@ import axios from 'axios';
         const [listOfEvents, setListOfEvents] = useState([])
     
         const getAllEvents = async () => {
-            await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&city=barcelona`)
+            await axios.get(`https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&countryCode=ES&city=barcelona`)
             .then(responseFromApi => {
                 console.log(responseFromApi.data)
                 setListOfEvents(
