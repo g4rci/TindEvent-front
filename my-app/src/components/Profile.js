@@ -7,6 +7,7 @@ import axios from "axios";
 
 class Profile extends Component {
   state = {
+    picture: "",
     username: "",
     email: "",
     location: "",
@@ -25,6 +26,7 @@ class Profile extends Component {
     );
     console.log("newestuser", newestUser.data);
     this.setState({
+      picture: newestUser.data.picture,
       username: newestUser.data.username,
       email: newestUser.data.email,
       location: newestUser.data.location,
