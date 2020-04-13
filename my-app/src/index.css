@@ -11,6 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.welcomDiv{
+  background-color: #05AFF2;
+  margin: 0px;
+}
+.welcome{
+  font-family: 'Monoton', cursive;
+  text-align: right;
+  margin: 0 16px;
+  padding-top: 16px;
+}
 .logo img{
   position: absolute;
   margin: 16px;

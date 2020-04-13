@@ -5,8 +5,8 @@ import AllEvents from "../components/AllEvents"
 class Private extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome {this.props.user.username}</h1>
+      <div className="welcomDiv">
+        <p className="welcome">Welcome: {this.props.user.username}</p>
         <div>
           <section className="carrousel buscador">
           <AllEvents />
