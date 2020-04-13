@@ -9,16 +9,15 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div className="logo">
-      <Link to={"/"} id='home-btn'>
+      <Link to={"/home"} id='home-btn'>
         
                 <nav>
-                    <a href="/">
+                    <a>
                     <img src="./logo2.jpg" width="30" height="30" alt=""/>
                     </a>
                 </nav>
         
       </Link>
-    
       <p>TindEvent</p>
       <nav  className='navbar'>
         {isLoggedin ? (

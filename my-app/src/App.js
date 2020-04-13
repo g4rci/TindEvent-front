@@ -10,9 +10,8 @@ import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
-import Cors from "cors"
 import HomePage from "./components/HomePage";
-import Home from "./pages/Home";
+import Cors from "cors"
 
 class App extends Component {
   render() {
@@ -20,8 +19,9 @@ class App extends Component {
       <AuthProvider>
         <div className='container'>
           <Navbar />
+
           <Switch>
-            <Route exact path='/home' component={HomePage} />          
+            <Route exact path='/home' component={HomePage} />
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />

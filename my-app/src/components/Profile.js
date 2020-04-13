@@ -30,7 +30,7 @@ class Profile extends Component {
       username: newestUser.data.username,
       email: newestUser.data.email,
       location: newestUser.data.location,
-      birthDate: newestUser.data.birthDate,
+      birthDate: newestUser.data.birthDate.slice(0, 10).split('-').reverse().join('-'),
       bio: newestUser.data.bio,
       isLoading: false,
     });

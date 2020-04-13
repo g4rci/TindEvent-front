@@ -17,7 +17,6 @@ function EditProfile(props) {
   
   const getUserInfo = async () => {
     const me = await axios.get(`http://localhost:4000/profile/${props.user._id}`);
-    console.log("MEMEME", me);
     setUsername(me.data.username)
     setEmail(me.data.email)
     setLocation(me.data.location)
@@ -98,12 +97,12 @@ function EditProfile(props) {
           />
           <br></br>
           <label>Birthdate:</label>
-          <DatePicker
+          <input
           type="Date"
-            name="birthDate"
+            name="birthDate" 
             value={birthDate}
-            onChange={e =>setBirthDate(e.target.value)}/>
-          
+            onChange={e =>setBirthDate(e.target.value)}
+          />
           <br></br>
           <label>Bio:</label>
           <textarea

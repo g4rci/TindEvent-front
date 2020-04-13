@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePage from '../components/HomePage'
-
+import SearchEvents from '../components/HomePage'
+import HomePage from '../components/HomePage';
 
 function Home() {
   return (
