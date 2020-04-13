@@ -1,36 +1,50 @@
-import React, { useState }from 'react'
+import React, { useState, useEffect }from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
 
+
 function EditProfile(props) {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    const [location, setLocation] = useState("");
-    const [bio, setBio] = useState("");
-    const [picture, setPicture] = useState("");
-    const [birthDate, setBirthDate] = useState("");
+  const [username, setUsername] = useState(props.user.username);
+  const [email, setEmail] = useState(props.user.email);
+  // const [password, setPassword] = useState("");
+  const [location, setLocation] = useState(props.user.location);
+  const [bio, setBio] = useState(props.user.bio);
+  const [picture, setPicture] = useState(props.user.picture);
+  const [birthDate, setBirthDate] = useState(props.user.birthDate);
+  
+  const getUserInfo = async () => {
+    const me = await axios.get(`http://localhost:4000/profile/${props.user._id}`);
+    console.log("MEMEME", me);
+    setUsername(me.data.username)
+    setEmail(me.data.email)
+    setLocation(me.data.location)
+    setBio(me.data.bio)
+    setBirthDate(me.data.birthDate)
+    setPicture(me.data.picture)  
+  }
 
-    console.log("has editado tu perfil, " + username)
-    
-    const history = useHistory();
-    
-    async function handleFormSubmit (event){
-      event.preventDefault();
-      try{
-        console.log(props.user._id)
-        await axios.put(`http://localhost:4000/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
-            history.push("/Profile") /*como devolver a profile los datos actualizado recein */
-            ;
-        }
-        catch(error){
-        console.log(error)
-        }
+  useEffect( () => {
+    getUserInfo()
+    }, []);
+  
+  
+  const history = useHistory();
+  
+  async function handleFormSubmit (event){
+    event.preventDefault();
+    try{
+      console.log("nuevo console", props.user._id)
+      await axios.put(`http://localhost:4000/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
+      history.push("/Profile") /*como devolver a profile los datos actualizado recein */
+      ;
     }
-
-
-    return (
+    catch(error){
+      console.log(error)
+    }
+  }
+  
+  return (
         <div>
       <div className ="d-flex justify-content-center">
         <form className="d-flex flex-column justify-content-center formBeer text-center align-items-center" onSubmit={e => handleFormSubmit(e)}>
@@ -39,7 +53,7 @@ function EditProfile(props) {
           <input
             type='text'
             name='picture'
-            value={props.user.picture}
+            value={picture}
             alt='Profile picture'
             onChange={e => setPicture(e.target.value)}
             />
@@ -48,7 +62,7 @@ function EditProfile(props) {
           <input
             type="text"
             name="username"
-            value={props.user.username}
+            value={username}
             onChange={e => setUsername(e.target.value)}
           />
           <br></br>
@@ -56,7 +70,7 @@ function EditProfile(props) {
           <input
           type="text"
             name="email"
-            value={props.user.email}
+            value={email}
             onChange={e => setEmail(e.target.value)}
           />
             {/* <br></br>
@@ -72,7 +86,7 @@ function EditProfile(props) {
           <input
           type="text"
             name="location"
-            value={props.user.location}
+            value={location}
             onChange={e => setLocation(e.target.value)}
           />
           <br></br>
@@ -80,7 +94,7 @@ function EditProfile(props) {
           <input
           type="Date"
             name="birthDate"
-            value={props.user.birthDate}
+            value={birthDate}
             onChange={e => setBirthDate(e.target.value)}
           />
           <br></br>
@@ -88,7 +102,7 @@ function EditProfile(props) {
           <textarea
           type="text"
             name="bio"
-            value={props.user.bio}
+            value={bio}
             onChange={e => setBio(e.target.value)}
           />
           <br></br>

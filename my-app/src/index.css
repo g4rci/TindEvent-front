@@ -71,7 +71,7 @@ button{
   justify-content: space-evenly;
   align-items: center;
   width: 300px;
-  height: 400px;
+  min-height: 400px;
   border: 2px solid white;
   border-radius: 10px;
   margin: 25px;
@@ -86,7 +86,7 @@ button{
   background-color: #05AFF2;
 }
 .profileCard img{
-  width: 80%;
+  width: 20vh;
   border-radius: 15px;
   margin-top: 25px;
 }
