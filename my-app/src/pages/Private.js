@@ -12,7 +12,7 @@ class Private extends Component {
           <AllEvents />
           </section>
           <section className="eventosfamosos">
-
+          
           </section>
           <section className="misGrupos">
             
