@@ -23,11 +23,7 @@ class Navbar extends Component {
       <nav  className='navbar'>
         {isLoggedin ? (
           <>
-<<<<<<< HEAD
-            <p>Welcome: {user.username}</p>
-=======
             {/* <p>Wecome: {user.username}</p> */}
->>>>>>> e0767cfdf1051ca0b50646de51aef527c970a80f
             <button className='navbar-button' onClick={logout}>
               Logout
             </button>
