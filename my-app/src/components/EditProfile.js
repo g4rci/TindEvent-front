@@ -20,7 +20,7 @@ function EditProfile(props) {
       event.preventDefault();
       try{
         console.log(props.user._id)
-        await axios.post(`http://localhost:4000/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
+        await axios.put(`http://localhost:4000/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
             history.push("/Profile") /*como devolver a profile los datos actualizado recein */
             ;
         }
@@ -39,7 +39,7 @@ function EditProfile(props) {
           <input
             type='text'
             name='picture'
-            value={picture}
+            value={props.user.picture}
             alt='Profile picture'
             onChange={e => setPicture(e.target.value)}
             />
@@ -48,7 +48,7 @@ function EditProfile(props) {
           <input
             type="text"
             name="username"
-            value={username}
+            value={props.user.username}
             onChange={e => setUsername(e.target.value)}
           />
           <br></br>
@@ -56,7 +56,7 @@ function EditProfile(props) {
           <input
           type="text"
             name="email"
-            value={email}
+            value={props.user.email}
             onChange={e => setEmail(e.target.value)}
           />
             {/* <br></br>
@@ -72,7 +72,7 @@ function EditProfile(props) {
           <input
           type="text"
             name="location"
-            value={location}
+            value={props.user.location}
             onChange={e => setLocation(e.target.value)}
           />
           <br></br>
@@ -80,7 +80,7 @@ function EditProfile(props) {
           <input
           type="Date"
             name="birthDate"
-            value={birthDate}
+            value={props.user.birthDate}
             onChange={e => setBirthDate(e.target.value)}
           />
           <br></br>
@@ -88,7 +88,7 @@ function EditProfile(props) {
           <textarea
           type="text"
             name="bio"
-            value={bio}
+            value={props.user.bio}
             onChange={e => setBio(e.target.value)}
           />
           <br></br>
