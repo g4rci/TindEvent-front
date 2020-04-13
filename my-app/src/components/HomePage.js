@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import css from "../index.css"
 
-class SearchEvents extends React.Component {
+class HomePage extends React.Component {
     componentDidMount() {
         const script = document.createElement("script");
         script.src = "https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js";
@@ -11,7 +11,7 @@ class SearchEvents extends React.Component {
         script.defer = true;
         document.body.appendChild(script);
         script.onload = () => {
-          var myWidget = new SearchEvents({
+          var myWidget = new HomePage({
               container: '#mycustom-container', // querySelector to the element that will contain the widget
               
           });
@@ -24,4 +24,4 @@ class SearchEvents extends React.Component {
         ) }
 }
 
-export default SearchEvents
+export default HomePage

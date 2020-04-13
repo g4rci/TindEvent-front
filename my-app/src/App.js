@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import AuthProvider from "./lib/AuthProvider";
 import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
@@ -10,7 +10,7 @@ import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
-import SearchEvents from "./components/SearchEvents";
+import HomePage from "./components/HomePage";
 import Cors from "cors"
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <AnonRoute exact path='/searchevents' component={SearchEvents} />
+            <Route exact path='/home' component={HomePage} />
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />
