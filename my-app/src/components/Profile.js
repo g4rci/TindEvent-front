@@ -11,9 +11,8 @@ class Profile extends Component {
       <div className='profile'>
         {isLoggedin ? (
           <>
-          <div className="">
+          <div className="profileCard">
            <img src={user.picture} width="210px"></img>
-           </div>
             <p>{user.username}</p>
             <p>{user.email}</p>
             <p>{user.location}</p>
@@ -22,6 +21,7 @@ class Profile extends Component {
             <button className='profileLogoutBtn' onClick={logout}>
               Logout
             </button>
+           </div>
           </>
         ) : (
           <>
