@@ -2,6 +2,8 @@ import React, { useState, useEffect }from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
+import DatePicker from 'react-date-picker';
+//import {useDatepicker, useMonth, useDay} from '@datepicker-react/hooks'
 
 
 function EditProfile(props) {
@@ -23,6 +25,11 @@ function EditProfile(props) {
     setBirthDate(me.data.birthDate)
     setPicture(me.data.picture)  
   }
+
+  // const newBirthDate =(value) => {
+  //   var date = new Date(value);
+  //   setBirthDate(date.toISOString());
+  // } 
 
   useEffect( () => {
     getUserInfo()
@@ -91,12 +98,12 @@ function EditProfile(props) {
           />
           <br></br>
           <label>Birthdate:</label>
-          <input
+          <DatePicker
           type="Date"
             name="birthDate"
             value={birthDate}
-            onChange={e => setBirthDate(e.target.value)}
-          />
+            onChange={e =>setBirthDate(e.target.value)}/>
+          
           <br></br>
           <label>Bio:</label>
           <textarea

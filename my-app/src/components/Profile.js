@@ -4,6 +4,7 @@ import { withAuth } from "../lib/AuthProvider";
 import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
 
+
 class Profile extends Component {
   state = {
     picture: "",
