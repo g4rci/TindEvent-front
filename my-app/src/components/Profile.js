@@ -42,7 +42,6 @@ class Profile extends Component {
       <div className="profile">
         {isLoggedin ? (
           <>
-<<<<<<< HEAD
             {!this.state.isLoading ? (
               <div>
                 <div className="">
@@ -60,19 +59,6 @@ class Profile extends Component {
             ) : (
               <h1>Loading</h1>
             )}
-=======
-          <div className="profileCard">
-           <img src={user.picture} width="210px"></img>
-            <p>{user.username}</p>
-            <p>{user.email}</p>
-            <p>{user.location}</p>
-            <p>{user.birthDate}</p>
-            <p>{user.bio}</p>
-            <button className='profileLogoutBtn' onClick={logout}>
-              Logout
-            </button>
-           </div>
->>>>>>> 309bbb68d4731012f77ef67f6802b2ecb3a23d1e
           </>
         ) : (
           <>
