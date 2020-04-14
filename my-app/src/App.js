@@ -11,7 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import HomePage from "./components/HomePage";
-import Cors from "cors"
+
 
 class App extends Component {
   render() {
