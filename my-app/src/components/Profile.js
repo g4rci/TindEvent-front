@@ -22,7 +22,7 @@ class Profile extends Component {
   }
   getUser = async () => {
     const newestUser = await axios.get(
-      `http://localhost:4000/profile/${this.props.user._id}`
+      `${process.env.REACT_APP_API_URI}/profile/${this.props.user._id}`
     );
     console.log("newestuser", newestUser.data);
     this.setState({
