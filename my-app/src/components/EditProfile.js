@@ -2,7 +2,6 @@ import React, { useState, useEffect }from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
-import DatePicker from 'react-date-picker';
 //import {useDatepicker, useMonth, useDay} from '@datepicker-react/hooks'
 
 
