@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 
 class EventDetails extends Component {
@@ -49,7 +50,14 @@ class EventDetails extends Component {
     });
     console.log(groups);
   };
+
+  handleJoin = async (groupid) => {
+    await axios.post(`${process.env.REACT_APP_API_URI}/groups/${groupid}/join/${this.props.user._id}`, {withCredentials: true})
+    this.props.history.push("/myGroups")
+  }
+  
   render() {
+    
     const groups = this.state.groups.map((group, i) => {
       return (
         <div className="flex-container">
@@ -63,9 +71,7 @@ class EventDetails extends Component {
           <div className="image-prop" style={{ backgroundColor: `#fff` }}>
             <div className="flex-container">
               <h1>{group.name}</h1>
-              <Link to={`/${this.props.match.params.id}/join/`}>
-              <button>Join</button>
-              </Link>
+              <button onClick={ () =>this.handleJoin(group._id)}>Join</button>
               {/* <button>#Italian</button> */}
             </div>
             <h2>BIO</h2>
@@ -96,4 +102,4 @@ class EventDetails extends Component {
   }
 }
 
-export default EventDetails;
+export default withAuth(EventDetails);
