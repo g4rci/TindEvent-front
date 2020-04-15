@@ -6,7 +6,7 @@ class Private extends Component {
   render() {
     return (
       <div className="welcomDiv">
-        <p className="welcome">Welcome: {this.props.user.username}</p>
+        {/* <p className="welcome">Welcome: {this.props.user.username}</p> */}
         <div>
           <section className="carrousel buscador">
           <AllEvents />
