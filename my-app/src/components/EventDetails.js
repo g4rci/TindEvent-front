@@ -61,15 +61,15 @@ class EventDetails extends Component {
             />
           </figure>
           <div className="image-prop" style={{ backgroundColor: `#fff` }}>
-            <div className="flex-container">
-              <h1>{group.name}</h1>
               <Link to={`/${this.props.match.params.id}/join/`}>
               <button>Join</button>
               </Link>
+            <div className="flex-container">
+              <h1>{group.name}</h1>
               {/* <button>#Italian</button> */}
             </div>
             <h2>BIO</h2>
-            <h3>{group.bio}</h3>
+            <h6>{group.bio}</h6>
           </div>
           
         </div>

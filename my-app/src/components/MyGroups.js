@@ -22,12 +22,31 @@ componentDidMount() {
 
   render() {
     return (
-      <div className="groups">
+      <div className="">
           <h1>GROUPS</h1>
          {this.state.groups.map((group, index) => {
             return (
             <div key={index}>
-                <Link to={`/groupdetails/${group._id}`}> <p>{group.name}</p> </Link>
+            <div className="flex-container">
+          <figure className="image-container">
+            <img
+              src="https://images.unsplash.com/photo-1474600056930-615c3d706456?ixlib=rb-0.3.5&s=dc82336ad3e3873b0a81e9389d346916&auto=format&fit=crop&w=1952&q=80"
+              className="image-prop"
+              alt=""
+            />
+          </figure>
+          <div className="image-prop" style={{ backgroundColor: `#fff` }}>
+            <div className="flex-container">
+              
+             
+              {/* <button>#Italian</button> */}
+            </div>
+            <h1>Group Name: {group.name}</h1> 
+            <h3>BIO: {group.bio}</h3>
+          </div>
+          
+        </div>
+                
          </div>
          )}
          )}
