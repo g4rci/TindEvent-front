@@ -18,13 +18,13 @@ class Profile extends Component {
 
   componentDidMount() {
     this.getUser();
-    console.log(this.state);
+    //console.log(this.state);
   }
   getUser = async () => {
     const newestUser = await axios.get(
       `${process.env.REACT_APP_API_URI}/profile/${this.props.user._id}`
     );
-    console.log("newestuser", newestUser.data);
+   // console.log("newestuser", newestUser.data);
     this.setState({
       picture: newestUser.data.picture,
       username: newestUser.data.username,
@@ -38,7 +38,7 @@ class Profile extends Component {
 
   render() {
     const { logout, isLoggedin } = this.props;
-    console.log(this.state);
+    
 
     return (
       <div className="profile">

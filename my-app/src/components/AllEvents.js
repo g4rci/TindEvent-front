@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 function AllEvents() {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
     await axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&countryCode=ES&city=barcelona`
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=barcelona`
       )
       .then((responseFromApi) => {
         //console.log(responseFromApi.data)
@@ -21,14 +22,14 @@ function AllEvents() {
   }, []);
 
   return (
-    <div className="eventsCard">
+    <div className="eventsContainer">
       {listOfEvents.map((event) => {
         return (
-          <div className="eventsCard">
+          
             <section className="cards">
               <article
                 className="card_ card--1"
-                style={{ backgroundImage: `url(${event.images[2].url})` }}
+                // style={{ backgroundImage: `url(${event.images[2].url})` }}
               >
                 <div className="card__info-hover">
                   <svg className="card__like" viewBox="0 0 24 24">
@@ -46,7 +47,7 @@ function AllEvents() {
                 </div>
                 <div
                   className="card__img"
-                  style={{ backgroundImage: `url(${event.images[2].url})` }}
+                  // style={{ backgroundImage: `url(${event.images[2].url})` }}
                 ></div>
                 <Link to={`/eventdetails/${event.id}`} className="card_link">
                   <div
@@ -56,7 +57,7 @@ function AllEvents() {
                 </Link>
                 <div className="card__info">
                   <span className="card__category"> {event.name}</span>
-                  <h3 className="card__title">{event.url}</h3>
+                   <h3 className="card__title">{event.url}</h3> 
                   <span className="card__by">
                     by{" "}
                     <a href="/" className="card__author" title="author">
@@ -66,7 +67,7 @@ function AllEvents() {
                 </div>
               </article>
             </section>
-          </div>
+          
         );
       })}
     </div>

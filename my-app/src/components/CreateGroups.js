@@ -1,80 +1,51 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import axios from "axios";
+import { withAuth } from "../lib/AuthProvider";
 
+class CreateGroup extends Component {
+  state = { name: "", bio: "", eventID: "" };
 
-class CreateGroups extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            creator: "",
-            name: "", 
-            bio: "",
-            eventID: ""
-      }
-    }
-    
-      handleFormSubmit = event => {
-        event.preventDefault();
-        
-        axios
-          .post(`${process.env.REACT_APP_API_URI}/groups/create}`)
-          .then(() => {
-            this.setState({ 
-                creator: "",
-                name: "", 
-                bio: "",
-                eventID: ""
-             });
-          })
-          .catch(error => console.log(error));
-      };
-    
-      handleChange = event => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-      };
-    
-      render() {
-        return (
-            <div>
-          <div className="form">
-            <form onSubmit={this.handleFormSubmit}>
-              <label>Creator:</label>
-              <input
-                type="text"
-                name="creator"
-                value={this.state.creator}
-                onChange={e => this.handleChange(e)}
-              />
-              <label>Name:</label>
-               <input
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={e => this.handleChange(e)}
-              />
-              <label>Bio:</label>
-              <textarea
-                name="bio"
-                value={this.state.bio}
-                onChange={e => this.handleChange(e)}
-              /> 
-              <label>eventID:</label>
-              <input
-                type="text"
-                name="eventID"
-                value={this.state.eventID}
-                onChange={e => this.handleChange(e)}
-              /> 
-              
+  handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(this.props.user)
+    console.log("EVENT", this.props.match.params.id);
+    const eventID = this.props.match.params.id;
+    const {name, bio } = this.state;
+    await axios
+      .post("http://localhost:4000/groups/create", { name, bio, eventID}, {withCredentials: true})
+      .then((data) => {
+      })
+      .catch((error) => console.log(error));
+  };
 
-    
-              <a href="/AllBeers"><input type="submit" value="Submit" />Go back</a>
-            </form>
-          </div>
-          </div>
-        );
-      
-     }
-    }
-export default CreateGroups
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  render() {
+    return (
+      <div className="form">
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={this.name}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <label>Bio:</label>
+          <textarea
+            type="text"
+            name="bio"
+            value={this.bio}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <button type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
+}
+
+export default withAuth(CreateGroup);
