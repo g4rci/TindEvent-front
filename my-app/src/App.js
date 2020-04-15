@@ -11,7 +11,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import HomePage from "./components/HomePage";
-import Cors from "cors"
+import EventDetails from "./components/EventDetails";
+import CreateGroups from "./components/CreateGroups";
 
 class App extends Component {
   render() {
@@ -27,6 +28,8 @@ class App extends Component {
             <PrivateRoute exact path='/private' component={Private} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/editprofile' component={EditProfile} />
+            <PrivateRoute exact path='/eventdetails/:id' component={EventDetails} />
+            <PrivateRoute exact path='/groups/create/' component={CreateGroups} />
           </Switch>
         </div>
       </AuthProvider>
