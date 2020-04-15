@@ -19,7 +19,7 @@ class Navbar extends Component {
         <nav className="navbar">
           {isLoggedin ? (
             <>
-              <p>Wecome: {user.username}</p>
+              <p>Welcome: {user.username}</p>
               <Link to="/profile">
                 <button className="navbar-button">Profile</button>
               </Link>

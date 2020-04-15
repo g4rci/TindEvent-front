@@ -85,7 +85,7 @@ button{
   border: 2px solid white;
   border-radius: 10px;
   margin: 25px;
-  background-color: #04BF68;
+  background-color: rgb(72, 172, 125);
   padding: 25px;
 }
 .profile{
@@ -93,7 +93,8 @@ button{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #05AFF2;
+  background-color: rgb(114, 85, 180);
+  min-height: 100vh;
 }
 .profileCard img{
   width: 20vh;
