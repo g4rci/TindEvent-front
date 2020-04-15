@@ -1,80 +1,75 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 
-class CreateGroups extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            creator: "",
-            name: "", 
-            bio: "",
-            eventID: ""
-      }
-    }
-    
-      handleFormSubmit = event => {
-        event.preventDefault();
-        
-        axios
-          .post(`${process.env.REACT_APP_API_URI}/groups/create/}`)
-          .then(() => {
-            this.setState({ 
-                creator: "",
-                name: "", 
-                bio: "",
-                eventID: ""
-             });
-          })
-          .catch(error => console.log(error));
-      };
-    
-      handleChange = event => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-      };
-    
+class CreateGroup extends Component {
+  state = { name: "", bio: "" };
+
+  handleFormSubmit = async (event) => {
+    event.preventDefault();
+    await axios
+    .post(`${process.env.REACT_APP_API_URI}/groups/create`, this.state )
+    .then(() => {
+      console.log("STATE", this.state)
+      this.setState({
+        name: "", 
+        bio: ""
+      });
+    })
+      .catch(error => console.this.log(error));
+  };
+   
+   
+    // const { name, bio } = this.state;
+    //console.log('Signup -> form submit', this.state );
+   //this.props.signup({  name, bio });
+  
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
       render() {
         return (
-            <div>
+          
           <div className="form">
             <form onSubmit={this.handleFormSubmit}>
-              <label>Creator:</label>
-              <input
-                type="text"
-                name="creator"
-                value={this.state.creator}
-                onChange={e => this.handleChange(e)}
-              />
-              <label>Name:</label>
+              {/* <label>Name:</label>
                <input
                 type="text"
                 name="name"
                 value={this.state.name}
                 onChange={e => this.handleChange(e)}
-              />
-              <label>Bio:</label>
+              /> */}
+               <label>Name:</label>
+          <input
+            type='text'
+            name='name'
+            value={this.name}
+            onChange={this.handleChange}
+          />
+              {/* <label>Bio:</label>
               <textarea
+                type='text'
                 name="bio"
                 value={this.state.bio}
                 onChange={e => this.handleChange(e)}
-              /> 
-              <label>eventID:</label>
-              <input
-                type="text"
-                name="eventID"
-                value={this.state.eventID}
-                onChange={e => this.handleChange(e)}
-              /> 
-              
-
-    
-              <a href="/AllBeers"><input type="submit" value="Submit" />Go back</a>
+              />  */}
+                <label>Bio:</label>
+           <textarea
+            type='text'
+            name='bio'
+            value={this.bio}
+            onChange={this.handleChange}
+          />
+              <input type="submit" value="Submit" />
             </form>
           </div>
-          </div>
+          
         );
-      
-     }
-    }
-export default CreateGroups
+    }  
+}
+    
+export default CreateGroup

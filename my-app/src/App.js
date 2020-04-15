@@ -29,7 +29,7 @@ class App extends Component {
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/editprofile' component={EditProfile} />
             <PrivateRoute exact path='/eventdetails/:id' component={EventDetails} />
-            <PrivateRoute exact path='/groups/create/' component={CreateGroups} />
+            <PrivateRoute exact path='/groups/create/:id' component={CreateGroups} />
           </Switch>
         </div>
       </AuthProvider>

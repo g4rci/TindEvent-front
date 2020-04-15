@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 function AllEvents() {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
     await axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&countryCode=ES&city=barcelona`
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=barcelona`
       )
       .then((responseFromApi) => {
         //console.log(responseFromApi.data)
