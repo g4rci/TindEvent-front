@@ -17,7 +17,7 @@ class CreateGroups extends Component {
         event.preventDefault();
         
         axios
-          .post(`${process.env.REACT_APP_API_URI}/groups/create/}`)
+          .post(`${process.env.REACT_APP_API_URI}/groups/create}`)
           .then(() => {
             this.setState({ 
                 creator: "",
