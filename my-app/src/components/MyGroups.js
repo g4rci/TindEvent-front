@@ -20,6 +20,18 @@ componentDidMount() {
     // console.log("LA NUEVA LISTA DE GRUPOS", groupsList);
   }
 
+  handleDelete = (idGroup) => { 
+    console.log("ID GROUP", idGroup)
+    axios.put(`${process.env.REACT_APP_API_URI}/groups/${idGroup}/${this.props.user._id}/abandonar`, {withCredentials: true})
+    const filterGroups = [...this.state.groups].filter((element)=> {
+      return element._id !== idGroup
+    })
+    console.log("Decline", filterGroups)
+    this.setState({
+      groups: filterGroups
+    })
+  }
+
   render() {
     return (
       <div className="groups">
@@ -27,7 +39,7 @@ componentDidMount() {
          {this.state.groups.map((group, index) => {
             return (
             <div key={index}>
-                <Link to={`/groupdetails/${group._id}`}> <p>{group.name}</p> </Link>
+                <Link to={`/groupdetails/${group._id}`}> <p>{group.name}</p> </Link>  <button onClick={ () => this.handleDelete(group._id)}>Abandonar grupo</button>
          </div>
          )}
          )}
