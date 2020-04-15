@@ -13,7 +13,6 @@ import EditProfile from "./components/EditProfile";
 import HomePage from "./components/HomePage";
 import EventDetails from "./components/EventDetails";
 import CreateGroups from "./components/CreateGroups";
-import Cors from "cors";
 
 class App extends Component {
   render() {

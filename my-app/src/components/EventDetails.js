@@ -1,52 +1,52 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import axios from "axios";
 
 class EventDetails extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-      }
-      componentDidMount() {
-        this.getSingleEvent();
-      }
-     
-    
-      getSingleEvent = async() => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: [],
+      image: "",
+    };
+  }
+  componentDidMount() {
+    this.getSingleEvent();
+  }
 
-        const { params } = this.props.match;
-        //console.log(params);
-        await axios
-          .get(`https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&id=${params.id}`)
-          .then(responseFromApi => {
-            const theEvent = responseFromApi.data._embedded.events[0];
-            
-            this.setState(theEvent);
-            console.log("caca", this.state)
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
-    
-      
+  getSingleEvent = async () => {
+    const { params } = this.props.match;
+    //console.log(params);
+    await axios
+      .get(
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=QDt0kSZEGRnYXjA1swZt9oSdGKMnjQM1&id=${params.id}`
+      )
+      .then((responseFromApi) => {
+        const theEvent = responseFromApi.data._embedded.events[0];
 
-    render() {
-        return (
-            <div>
-            
-                <h1>Artista</h1>
-                {/* <img src={this.state.images[0].url} alt={this.state.name}/> */}
-                <h6>{this.state.name}</h6>
-                <h6>{this.state.type}</h6>
-                {/* <p>{this.state.dates.start.localDate}</p> */}
-                {/* <h6>{this.state.dates.start.localTime}</h6> */}
+        this.setState({
+          event: theEvent,
+          image: theEvent.images[1].url,
+        });
 
-                
-                
-    
-            </div>
-        )
-    }
+        console.log("caca", this.state.event.images[0].url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Artista</h1>
+        <img src={this.state.image} alt={this.state.name} />
+        <h6>{this.state.name}</h6>
+        <h6>{this.state.type}</h6>
+        {/* <p>{this.state.dates.start.localDate}</p> */}
+        {/* <h6>{this.state.dates.start.localTime}</h6> */}
+      </div>
+    );
+  }
 }
 
-export default EventDetails
+export default EventDetails;
