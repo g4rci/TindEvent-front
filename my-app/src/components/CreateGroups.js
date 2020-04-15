@@ -12,7 +12,7 @@ class CreateGroup extends Component {
     const eventID = this.props.match.params.id;
     const {name, bio } = this.state;
     await axios
-      .post("http://localhost:4000/groups/create", { name, bio, eventID}, {withCredentials: true})
+      .post(`${process.env.REACT_APP_API_URI}/groups/create`, { name, bio, eventID}, {withCredentials: true})
       .then((data) => {
       })
       .catch((error) => console.log(error));

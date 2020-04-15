@@ -268,3 +268,54 @@ color: #868686;
 .card_:hover .card__info-hover {
   opacity: 0;
 }
+
+/* grops cards */
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+
+body {
+  /* background: linear-gradient(to bottom right, #67b26f, #4ca2cd); */
+  font-family:'Open Sans';
+  font-size: 20px;
+  height:100vh;
+  /* padding:30px; */
+}
+.image-prop {
+  width: 350px;
+  height:200px
+}
+.flex-container {
+  display:flex;
+  justify-content:center;
+  border-radius:4px;
+  max-width:800px;
+  margin: 0 auto;
+}
+
+figure {
+  margin:0 0 ;
+}
+
+h1 {
+  font-size:110%;
+  font-weight: 600;
+  margin:0 0;
+}
+
+/* button {
+  background-color:#3498db;
+  color:#fff;
+  border:none;
+  border-radius:5px;
+  height:20px;
+  display:flex;
+  align-self:center;
+  margin-left:5px;
+} */
+
+h2 {
+  font-size:75%;
+  font-weight:400;
+  margin-left:1.05em;
+  line-height:20px;
+}

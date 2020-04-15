@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class EventDetails extends Component {
@@ -8,15 +8,17 @@ class EventDetails extends Component {
     this.state = {
       event: [],
       image: "",
+      groups: [],
     };
   }
   componentDidMount() {
     this.getSingleEvent();
+    this.getGroupEventID();
   }
 
   getSingleEvent = async () => {
     const { params } = this.props.match;
-    //console.log(params);
+    console.log("ESTE PARAMS", params);
     await axios
       .get(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
@@ -36,15 +38,58 @@ class EventDetails extends Component {
       });
   };
 
+  getGroupEventID = async () => {
+    const { params } = this.props.match;
+    console.log("Entrando en GetGroupEventID", params.id);
+    const groups = await axios.get(
+      `${process.env.REACT_APP_API_URI}/groups/grouplist/${params.id}`
+    );
+    this.setState({
+      groups: groups.data,
+    });
+    console.log(groups);
+  };
   render() {
+    const groups = this.state.groups.map((group, i) => {
+      return (
+        <div className="flex-container">
+          <figure className="image-container">
+            <img
+              src="https://images.unsplash.com/photo-1474600056930-615c3d706456?ixlib=rb-0.3.5&s=dc82336ad3e3873b0a81e9389d346916&auto=format&fit=crop&w=1952&q=80"
+              className="image-prop"
+              alt=""
+            />
+          </figure>
+          <div className="image-prop" style={{ backgroundColor: `#fff` }}>
+            <div className="flex-container">
+              <h1>{group.name}</h1>
+              <Link to={`/${this.props.match.params.id}/join/`}>
+              <button>Join</button>
+              </Link>
+              {/* <button>#Italian</button> */}
+            </div>
+            <h2>BIO</h2>
+            <h3>{group.bio}</h3>
+          </div>
+          
+        </div>
+      );
+    });
     return (
       <div>
         <h1>Artista</h1>
         <img src={this.state.image} alt={this.state.name} />
         <h6>{this.state.event.name}</h6>
         <h6>{this.state.event.type}</h6>
+        {this.state.groups ? (
+          <div>
+            {groups}
+          </div>
+        ) : (
+          <h1>Loading</h1>
+        )}
         <Link to={`/groups/create/${this.props.match.params.id}`}>
-        <button>Create Group</button>
+              <button>Create Group</button>
         </Link>
       </div>
     );

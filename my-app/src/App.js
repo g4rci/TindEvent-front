@@ -13,6 +13,8 @@ import EditProfile from "./components/EditProfile";
 import HomePage from "./components/HomePage";
 import EventDetails from "./components/EventDetails";
 import CreateGroups from "./components/CreateGroups";
+import MyGroups from "./components/MyGroups";
+import GroupDetails from "./components/GroupDetails";
 
 class App extends Component {
   render() {
@@ -28,7 +30,9 @@ class App extends Component {
             <PrivateRoute exact path='/private' component={Private} />
             <PrivateRoute exact path='/profile' component={Profile} />
             <PrivateRoute exact path='/editprofile' component={EditProfile} />
+            <PrivateRoute exact path='/mygroups' component={MyGroups} />
             <PrivateRoute exact path='/eventdetails/:id' component={EventDetails} />
+            <PrivateRoute exact path='/groupdetails/:id' component={GroupDetails} />
             <PrivateRoute exact path='/groups/create/:id' component={CreateGroups} />
           </Switch>
         </div>

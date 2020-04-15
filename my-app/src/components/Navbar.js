@@ -20,6 +20,9 @@ class Navbar extends Component {
           {isLoggedin ? (
             <>
               <p>Wecome: {user.username}</p>
+              <Link to="/mygroups">
+                <button className="navbar-button">Mis Grupos</button>
+              </Link>
               <Link to="/profile">
                 <button className="navbar-button">Profile</button>
               </Link>
