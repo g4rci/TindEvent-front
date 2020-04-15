@@ -2,7 +2,6 @@ import React, { useState, useEffect }from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
-import DatePicker from 'react-date-picker';
 //import {useDatepicker, useMonth, useDay} from '@datepicker-react/hooks'
 
 
@@ -16,7 +15,7 @@ function EditProfile(props) {
   const [birthDate, setBirthDate] = useState(props.user.birthDate);
   
   const getUserInfo = async () => {
-    const me = await axios.get(`http://localhost:4000/profile/${props.user._id}`);
+    const me = await axios.get(`${process.env.REACT_APP_API_URI}/profile/${props.user._id}`);
     setUsername(me.data.username)
     setEmail(me.data.email)
     setLocation(me.data.location)
@@ -41,7 +40,7 @@ function EditProfile(props) {
     event.preventDefault();
     try{
       console.log("nuevo console", props.user._id)
-      await axios.put(`http://localhost:4000/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
+      await axios.put(`${process.env.REACT_APP_API_URI}/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
       history.push("/Profile") /*como devolver a profile los datos actualizado recein */
       ;
     }

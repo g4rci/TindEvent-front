@@ -22,7 +22,7 @@ class Profile extends Component {
   }
   getUser = async () => {
     const newestUser = await axios.get(
-      `http://localhost:4000/profile/${this.props.user._id}`
+      `${process.env.REACT_APP_API_URI}/profile/${this.props.user._id}`
     );
     console.log("newestuser", newestUser.data);
     this.setState({
@@ -47,15 +47,15 @@ class Profile extends Component {
             {!this.state.isLoading ? (
               <div>
                 <div className="profileCard">
-                  <img src={this.state.picture} width="210px"></img>
+                <img src={this.state.picture} width="210px"/>
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.location}</p>
                 <p>{this.state.birthDate}</p>
                 <p>{this.state.bio}</p>
-                <button className="profileLogoutBtn" onClick={logout}>
-                  Logout
-                </button>
+                <Link to="/editprofile">
+                  <button className="profileLoginBtn">Edit</button>
+                </Link>
                 </div>
               </div>
             ) : (

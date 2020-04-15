@@ -23,6 +23,9 @@ class Navbar extends Component {
         {isLoggedin ? (
           <>
             {/* <p>Wecome: {user.username}</p> */}
+            <Link to='/profile'>
+              <button className='navbar-button'>Profile</button>
+            </Link>
             <button className='navbar-button' onClick={logout}>
               Logout
             </button>
