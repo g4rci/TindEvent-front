@@ -19,10 +19,11 @@ class HomePage extends React.Component {
         }
     }
     render() {
+        console.log(process.env.REACT_APP_TICKETMASTERKEY)
         return (
-            <div>
-            <div>Home Page</div>
-        <div id="mycustom-container" w-type="event-discovery" w-tmapikey={process.env.REACT_APP_TICKETMASTERKEY} w-googleapikey={process.env.REACT_APP_GOOGLEKEY} w-keyword="" w-theme="simple" w-colorscheme="light" w-width="350" w-height="600" w-size="25" w-border="0" w-borderradius="4" w-postalcode="" w-radius="25" w-city="barcelona" w-period="year" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_e7qqga" w-countrycode="ES" w-source="" w-branding="Ticketmaster" w-latlong=""></div>
+            <div className="widget">
+        
+        <div w-type="event-discovery" w-tmapikey={process.env.REACT_APP_TICKETMASTERKEY} w-googleapikey={process.env.REACT_APP_GOOGLEKEY} w-keyword="" w-theme="grid" w-colorscheme="dark" w-width="1000%" w-height="550" w-size="25" w-border="2" w-borderradius="15" w-postalcode="" w-radius="25" w-city="Barcelona" w-period="week" w-layout="fullwidth" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-titlelink="off" w-sorting="dateAscending" w-id="id_n2vi7o" w-countrycode="ES" w-source="" w-branding="Ticketmaster" w-maxheight="550" w-latlong=""></div>
         <Link to='/private'>
               <button className='navbar-button'>Buscar evento</button>
         </Link>

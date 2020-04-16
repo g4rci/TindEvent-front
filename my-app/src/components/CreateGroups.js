@@ -1,75 +1,51 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-
+import { withAuth } from "../lib/AuthProvider";
 
 class CreateGroup extends Component {
-  state = { name: "", bio: "" };
+  state = { name: "", bio: "", eventID: "" };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(this.props.user)
+    console.log("EVENT", this.props.match.params.id);
+    const eventID = this.props.match.params.id;
+    const {name, bio } = this.state;
     await axios
-    .post(`${process.env.REACT_APP_API_URI}/groups/create`, this.state )
-    .then(() => {
-      console.log("STATE", this.state)
-      this.setState({
-        name: "", 
-        bio: ""
-      });
-    })
-      .catch(error => console.this.log(error));
+      .post(`${process.env.REACT_APP_API_URI}/groups/create`, { name, bio, eventID}, {withCredentials: true})
+      .then((data) => {
+      })
+      .catch((error) => console.log(error));
   };
-   
-   
-    // const { name, bio } = this.state;
-    //console.log('Signup -> form submit', this.state );
-   //this.props.signup({  name, bio });
-  
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-      render() {
-        return (
-          
-          <div className="form">
-            <form onSubmit={this.handleFormSubmit}>
-              {/* <label>Name:</label>
-               <input
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={e => this.handleChange(e)}
-              /> */}
-               <label>Name:</label>
+  render() {
+    return (
+      <div className="form">
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Name:</label>
           <input
-            type='text'
-            name='name'
+            type="text"
+            name="name"
             value={this.name}
-            onChange={this.handleChange}
+            onChange={(e) => this.handleChange(e)}
           />
-              {/* <label>Bio:</label>
-              <textarea
-                type='text'
-                name="bio"
-                value={this.state.bio}
-                onChange={e => this.handleChange(e)}
-              />  */}
-                <label>Bio:</label>
-           <textarea
-            type='text'
-            name='bio'
+          <label>Bio:</label>
+          <textarea
+            type="text"
+            name="bio"
             value={this.bio}
-            onChange={this.handleChange}
+            onChange={(e) => this.handleChange(e)}
           />
-              <input type="submit" value="Submit" />
-            </form>
-          </div>
-          
-        );
-    }  
+          <button type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
 }
-    
-export default CreateGroup
+
+export default withAuth(CreateGroup);
