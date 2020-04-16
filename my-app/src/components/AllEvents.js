@@ -7,6 +7,7 @@ function AllEvents() {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
+   
     await axios
       .get(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=barcelona`

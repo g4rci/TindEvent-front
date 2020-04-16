@@ -63,7 +63,7 @@ class EventDetails extends Component {
         <div className="flex-container">
           <figure className="image-container">
             <img
-              src="https://images.unsplash.com/photo-1474600056930-615c3d706456?ixlib=rb-0.3.5&s=dc82336ad3e3873b0a81e9389d346916&auto=format&fit=crop&w=1952&q=80"
+              src={this.state.image}
               className="image-prop"
               alt=""
             />

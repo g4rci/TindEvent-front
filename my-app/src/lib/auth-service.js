@@ -27,7 +27,6 @@ class Auth {
   me() {
     return this.auth.get("/auth/me")
     .then(({ data }) => {
-      console.log(data)
       return data
     });
   }
