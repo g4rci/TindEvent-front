@@ -7,15 +7,12 @@ class CreateGroup extends Component {
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(this.props.user)
-    console.log("EVENT", this.props.match.params.id);
     const eventID = this.props.match.params.id;
     const {name, bio } = this.state;
     await axios
       .post(`${process.env.REACT_APP_API_URI}/groups/create`, { name, bio, eventID}, {withCredentials: true})
-      .then((data) => {
-      })
-      .catch((error) => console.log(error));
+      this.props.history.push("/mygroups")
+      
   };
 
   handleChange = (event) => {
@@ -41,7 +38,8 @@ class CreateGroup extends Component {
             value={this.bio}
             onChange={(e) => this.handleChange(e)}
           />
-          <button type="submit" value="Submit" />
+          
+          <button type="submit" value="Submit">Create</button>
         </form>
       </div>
     );

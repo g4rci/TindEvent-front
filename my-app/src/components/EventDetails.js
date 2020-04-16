@@ -69,9 +69,10 @@ class EventDetails extends Component {
             />
           </figure>
           <div className="image-prop" style={{ backgroundColor: `#fff` }}>
+              <button onClick={ () =>this.handleJoin(group._id)}>Join</button>
             <div className="flex-container">
               <h1>{group.name}</h1>
-              <button onClick={ () =>this.handleJoin(group._id)}>Join</button>
+              
               {/* <button>#Italian</button> */}
             </div>
             <h2>BIO</h2>
