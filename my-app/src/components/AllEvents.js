@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {withAuth} from "../lib/AuthProvider.js"
 
 
-function AllEvents() {
+function AllEvents(props) {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
-   
+   console.log(props.user)
     await axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=barcelona`
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
       )
       .then((responseFromApi) => {
         //console.log(responseFromApi.data)
@@ -25,7 +26,6 @@ function AllEvents() {
   return (
     <div className="eventsContainer">
       {listOfEvents.map((event) => {
-        console.log(event)
         return (
           
             <section className="cards">
@@ -76,4 +76,4 @@ function AllEvents() {
   );
 }
 
-export default AllEvents;
+export default withAuth(AllEvents);
