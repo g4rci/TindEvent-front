@@ -5,10 +5,11 @@ import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
 
 class Mygroups extends Component {
-  state = { groups: [] };
+  state = { groups: [], image:"" };
 
   componentDidMount() {
     this.getMyGroups();
+    this.getSingleEvent();
   }
 
   getMyGroups = async () => {
@@ -35,69 +36,70 @@ class Mygroups extends Component {
       groups: filterGroups,
     });
   };
-
-  getSingleEvent = async () => {
-    const { params } = this.props.match;
-    console.log("ESTE PARAMS", params);
-    await axios
-      .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
-      )
-      .then((responseFromApi) => {
-        const theEvent = responseFromApi.data._embedded.events[0];
-
-        this.setState({
-          event: theEvent,
-          image: theEvent.images[1].url,
-        });
-
-        //console.log("caca", this.state.event.images[0].url);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  // getSingleEvent = async (url) => {
-  //   const { params } = this.props.match;
-  //   await axios
-  //     .get(
-  //       `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${url}`
-  //     )
-  //     .then((responseFromApi) => {
-  //         return responseFromApi
-        
-
-  //       //console.log("caca", this.state.event.images[0].url);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
   
-  render() {
-    return (
+  
+    // getSingleEvent = async () => {
+    //   const { params } = this.props.match;
+    //   console.log("ESTE PARAMS", params);
+    //   await axios
+    //     .get(
+    //       `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
+    //     )
+    //     .then((responseFromApi) => {
+    //       const theEvent = responseFromApi;
+    //       console.log("response",responseFromApi)
+    //       this.setState({
+    //         event: theEvent,
+    //         image: theEvent.images[1].url,
+    //       });
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
+  jgetSingleEvent = async (props) => {
+      const { params } = this.props.match;
+      console.log("paramsSingleEvent", params)
+      await axios
+        .get(
+            `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${props}`
+          )
+          .then((responseFromApi) => {
+            console.log("hola",responseFromApi.data._embedded.events[0].images[0].url)
+                // return responseFromApi.data._embedded.events[0].images[0].url
+                this.setState({ image: responseFromApi.data._embedded.events[0].images[1].url});
+        
+              //console.log("caca", this.state.event.images[0].url);
+            })
+            .catch((err) => {
+                console.log(err);
+              });
+          };
+          
+          render() {
+            
+            return (
       <div className="groupsCard">
         <h1>GROUPS</h1>
         {this.state.groups.map((group, index) => {
           this.getSingleEvent(group.eventID)
-          console.log(group.eventID)
           return (
             <div key={index}>
               <div className="flex-container">
                 <figure className="image-container">
                   <img
-                    src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80"
+                    src={this.state.image}
                     className="image-prop"
                     alt=""
                   />
                 </figure>
-                <div className="image-prop" style={{ backgroundColor: `#fff` }}>
-                  <div className="flex-container">
+                <div className="image-prop">
+                  <div>
                     {/* <button>#Italian</button> */}
                   </div>
-                  <Link to={`/groupdetails/${group._id}`}>
-                    <button>{group.name}</button>
+          
+                  <Link to={`/groupdetails/${group._id}`} className="title">
+                    {group.name}
                   </Link>
                   <h6>BIO: {group.bio}</h6>
               <button onClick={() => this.handleDelete(group._id)}>

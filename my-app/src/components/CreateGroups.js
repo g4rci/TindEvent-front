@@ -22,8 +22,8 @@ class CreateGroup extends Component {
 
   render() {
     return (
-      <div className="form">
-        <form onSubmit={this.handleFormSubmit}>
+      <div className="profile">
+        <form className="profileCard" onSubmit={this.handleFormSubmit}>
           <label>Name:</label>
           <input
             type="text"

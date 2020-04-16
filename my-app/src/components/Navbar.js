@@ -11,7 +11,7 @@ class Navbar extends Component {
         <Link to={"/home"} id="home-btn">
           <nav>
             <a>
-              <img src="./logo2.jpg" width="30" height="30" alt="" />
+              <img src="./logo2.png" width="30" height="30" alt="" />
             </a>
           </nav>
         </Link>

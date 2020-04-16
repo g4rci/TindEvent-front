@@ -50,8 +50,8 @@ function EditProfile(props) {
   
   return (
         <div>
-      <div className ="cards">
-        <form className="card_" onSubmit={e => handleFormSubmit(e)}>
+      <div className ="profile">
+        <form className="profileCard" onSubmit={e => handleFormSubmit(e)}>
           
         <label>Photo:</label>
           <input
@@ -76,14 +76,6 @@ function EditProfile(props) {
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-            {/* <br></br>
-          <label>Password:</label>
-          <input
-          type="password"
-            name="password"
-            value={password: hashPass}
-            onChange={e => setPassword(e.target.value)}
-          /> */}
           <br></br>
           <label>Location:</label>
           <input
@@ -110,7 +102,7 @@ function EditProfile(props) {
           />
           <br></br>
 
-          <input type="submit" value="Submit" />
+          <button type="submit" value="Submit">Edit</button>
         </form>
       </div>
       </div>
