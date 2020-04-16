@@ -51,8 +51,8 @@ function EditProfile(props) {
   
   return (
         <div>
-      <div className ="d-flex justify-content-center">
-        <form className="d-flex flex-column justify-content-center formBeer text-center align-items-center" onSubmit={e => handleFormSubmit(e)}>
+      <div className ="cards">
+        <form className="card_" onSubmit={e => handleFormSubmit(e)}>
           
         <label>Photo:</label>
           <input

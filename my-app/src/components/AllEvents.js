@@ -7,6 +7,7 @@ function AllEvents() {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
+   
     await axios
       .get(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=barcelona`
@@ -24,6 +25,7 @@ function AllEvents() {
   return (
     <div className="eventsContainer">
       {listOfEvents.map((event) => {
+        console.log(event)
         return (
           
             <section className="cards">
@@ -56,12 +58,12 @@ function AllEvents() {
                   ></div>
                 </Link>
                 <div className="card__info">
-                  <span className="card__category"> {event.name}</span>
-                   <h3 className="card__title">{event.url}</h3> 
+                  <span className="card__category"> {event._embedded.venues[0].address.line1}</span>
+                   <h4 className="card__title">{event.name}</h4> 
                   <span className="card__by">
-                    by{" "}
+                    at:{" "}
                     <a href="/" className="card__author" title="author">
-                      Celeste Mills
+                    {event._embedded.venues[0].name}
                     </a>
                   </span>
                 </div>
