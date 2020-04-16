@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState, useEffect, createRef }from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
@@ -39,9 +39,8 @@ function EditProfile(props) {
   async function handleFormSubmit (event){
     event.preventDefault();
     try{
-      console.log("nuevo console", props.user._id)
       await axios.put(`${process.env.REACT_APP_API_URI}/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
-      history.push("/Profile") /*como devolver a profile los datos actualizado recein */
+      history.push("/Profile")
       ;
     }
     catch(error){
@@ -51,16 +50,15 @@ function EditProfile(props) {
   
   return (
         <div>
-      <div className ="cards">
-        <form className="card_" onSubmit={e => handleFormSubmit(e)}>
+      <div className ="profile">
+        <form className="profileCard" onSubmit={e => handleFormSubmit(e)}>
           
         <label>Photo:</label>
           <input
-            type='text'
+            type='file'
             name='picture'
-            value={picture}
             alt='Profile picture'
-            onChange={e => setPicture(e.target.value)}
+            //onChange={e => setPicture(e.target.value)}
             />
           <br></br>
           <label>Username:</label>
@@ -78,14 +76,6 @@ function EditProfile(props) {
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-            {/* <br></br>
-          <label>Password:</label>
-          <input
-          type="password"
-            name="password"
-            value={password: hashPass}
-            onChange={e => setPassword(e.target.value)}
-          /> */}
           <br></br>
           <label>Location:</label>
           <input
@@ -112,7 +102,7 @@ function EditProfile(props) {
           />
           <br></br>
 
-          <input type="submit" value="Submit" />
+          <button type="submit" value="Submit">Edit</button>
         </form>
       </div>
       </div>

@@ -10,6 +10,9 @@ class EventDetails extends Component {
       event: [],
       image: "",
       groups: [],
+      date: "",
+      time:"",
+      venue:""
     };
   }
   componentDidMount() {
@@ -30,6 +33,9 @@ class EventDetails extends Component {
         this.setState({
           event: theEvent,
           image: theEvent.images[1].url,
+          date: theEvent.dates.start.localDate.slice(0, 10).split('-').reverse().join('-'),
+          time: theEvent.dates.start.localTime,
+          venue: theEvent._embedded.venues[0].city.name
         });
 
         //console.log("caca", this.state.event.images[0].url);
@@ -52,55 +58,55 @@ class EventDetails extends Component {
   };
 
   handleJoin = async (groupid) => {
-    await axios.post(`${process.env.REACT_APP_API_URI}/groups/${groupid}/join/${this.props.user._id}`, {withCredentials: true})
-    this.props.history.push("/myGroups")
-  }
-  
+    await axios.post(
+      `${process.env.REACT_APP_API_URI}/groups/${groupid}/join/${this.props.user._id}`,
+      { withCredentials: true }
+    );
+    this.props.history.push("/myGroups");
+  };
+
   render() {
-    
     const groups = this.state.groups.map((group, i) => {
       return (
         <div className="flex-container">
           <figure className="image-container">
-            <img
-              src={this.state.image}
-              className="image-prop"
-              alt=""
-            />
+            <img src={this.state.image} className="image-prop" alt="" />
           </figure>
-          <div className="image-prop" style={{ backgroundColor: `#fff` }}>
-              <button onClick={ () =>this.handleJoin(group._id)}>Join</button>
+          <div className="image-prop">
+            <button onClick={() => this.handleJoin(group._id)}>Join</button>
             <div className="flex-container">
               <h1>{group.name}</h1>
-              
+
               {/* <button>#Italian</button> */}
             </div>
             <h2>BIO</h2>
             <h6>{group.bio}</h6>
           </div>
-          
         </div>
       );
     });
     return (
       <div>
-        <h1>Artista</h1>
-        <img src={this.state.image} alt={this.state.name} />
-        <h6>{this.state.event.name}</h6>
-        <h6>{this.state.event.type}</h6>
-        {this.state.groups ? (
+        <div id="gradient"></div>
+        <div id="cardDet">
+          <img src={this.state.image} alt={this.state.name} />
+          <h2>{this.state.event.name}</h2>
+          <p>{this.state.event.type}</p>
+          <p>{this.state.date}, h: {this.state.time}</p>
+          <p className="left bottom">Venue: {this.state.venue}</p>
           <div>
-            {groups}
-          </div>
-        ) : (
-          <h1>Loading</h1>
-        )}
         <Link to={`/groups/create/${this.props.match.params.id}`}>
-              <button>Create Group</button>
+          <button>Create Group</button>
         </Link>
+        </div>
+        </div>
+        
+      {this.state.groups  ? (<div>{groups}</div>) : (
+        <h1>Loading</h1>
+        )}
       </div>
     );
-  }
-}
+}}
+
 
 export default withAuth(EventDetails);

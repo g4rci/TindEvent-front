@@ -20,10 +20,10 @@ class Signup extends Component {
   render() {
     const { picture, username, email, password, location, birthDate, bio } = this.state;
     return (
-      <div>
-        <h1>Sign Up</h1>
+      <div className="profile">
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="profileCard" onSubmit={this.handleFormSubmit}>
+        <h1>Sign Up</h1>
         <label>Photo:</label>
           <input
             type='text'
@@ -74,12 +74,12 @@ class Signup extends Component {
             value={bio}
             onChange={this.handleChange}
           />
-          <input type='submit' value='Signup' />
-          <br></br>
+          <button type='submit' value='Signup'>SignUp</button>
+          
+        <Link to={"/login"}> Login</Link>
         </form>
 
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+        
       </div>
     );
   }

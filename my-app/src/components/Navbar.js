@@ -11,7 +11,7 @@ class Navbar extends Component {
         <Link to={"/home"} id="home-btn">
           <nav>
             <a>
-              <img src="./logo2.jpg" width="30" height="30" alt="" />
+              <img src="./logo2.png" width="30" height="30" alt="" />
             </a>
           </nav>
         </Link>
@@ -19,9 +19,9 @@ class Navbar extends Component {
         <nav className="navbar">
           {isLoggedin ? (
             <>
-              <p>Wecome: {user.username}</p>
+              <p>Welcome: {user.username}</p>
               <Link to="/mygroups">
-                <button className="navbar-button">Mis Grupos</button>
+                <button className="navbar-button">My Groups</button>
               </Link>
               <Link to="/profile">
                 <button className="navbar-button">Profile</button>
