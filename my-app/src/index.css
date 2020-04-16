@@ -31,6 +31,10 @@ code {
   height: 45px;
   position: absolute;
   margin: 10px;
+  
+  -webkit-animation: text-flicker-in-glow 8s linear both;
+  animation: text-flicker-in-glow 8s linear both;
+
 }
 .logo p {
   position: absolute;
@@ -38,8 +42,8 @@ code {
   font-family: "Monoton", cursive;
   font-size: 25px;
   color: rgb(250, 214, 136);
-  -webkit-animation: text-flicker-in-glow 4s linear both;
-    animation: text-flicker-in-glow 4s linear both;
+  -webkit-animation: text-flicker-in-glow 8s linear both;
+    animation: text-flicker-in-glow 8s linear both;
 
 }
 
@@ -213,7 +217,7 @@ html {
 .card_ {
   margin-right: 25px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.63);
   width: 33.3%;
   position: relative;
   border-radius: 12px;
@@ -229,7 +233,7 @@ html {
 
 .card__info {
   z-index: 2;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.027);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 16px 24px 24px 24px;

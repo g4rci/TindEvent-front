@@ -5,11 +5,12 @@ import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
 
 class Mygroups extends Component {
-  state = { groups: [], image:"" };
+  state = { groups: [],
+             image:"https://images.unsplash.com/photo-1557787163-1635e2efb160?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2552&q=80" };
 
   componentDidMount() {
     this.getMyGroups();
-    this.getSingleEvent();
+    // this.getSingleEvent();
   }
 
   getMyGroups = async () => {
@@ -21,6 +22,7 @@ class Mygroups extends Component {
 
     // console.log("LA NUEVA LISTA DE GRUPOS", groupsList);
   };
+
 
   handleDelete = (idGroup) => {
     console.log("ID GROUP", idGroup);
@@ -37,32 +39,11 @@ class Mygroups extends Component {
     });
   };
   
-  
-    // getSingleEvent = async () => {
-    //   const { params } = this.props.match;
-    //   console.log("ESTE PARAMS", params);
-    //   await axios
-    //     .get(
-    //       `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
-    //     )
-    //     .then((responseFromApi) => {
-    //       const theEvent = responseFromApi;
-    //       console.log("response",responseFromApi)
-    //       this.setState({
-    //         event: theEvent,
-    //         image: theEvent.images[1].url,
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
-  jgetSingleEvent = async (props) => {
+  getSingleImage = async (id) => {
       const { params } = this.props.match;
-      console.log("paramsSingleEvent", params)
       await axios
         .get(
-            `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${props}`
+            `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${id}`
           )
           .then((responseFromApi) => {
             console.log("hola",responseFromApi.data._embedded.events[0].images[0].url)
@@ -75,20 +56,20 @@ class Mygroups extends Component {
                 console.log(err);
               });
           };
-          
+         
           render() {
             
             return (
       <div className="groupsCard">
         <h1>GROUPS</h1>
         {this.state.groups.map((group, index) => {
-          this.getSingleEvent(group.eventID)
+          {/* this.getSingleEvent(group.eventID) */}
           return (
             <div key={index}>
               <div className="flex-container">
                 <figure className="image-container">
-                  <img
-                    src={this.state.image}
+                  <img src="https://images.unsplash.com/photo-1557787163-1635e2efb160?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2552&q=80"
+                  /*{this.getSingleImage(group.enventID) ? this.getSingleImage(group.enventID) : this.state.image}{this.state.image}*/
                     className="image-prop"
                     alt=""
                   />
