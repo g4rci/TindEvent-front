@@ -8,9 +8,9 @@ class Private extends Component {
       <div className="welcomDiv">
         {/* <p className="welcome">Welcome: {this.props.user.username}</p> */}
         <div>
-          <section className="carrousel buscador">
+          
           <AllEvents />
-          </section>
+         
           <section className="eventosfamosos">
           
           </section>

@@ -18,6 +18,7 @@ code {
     monospace;
 }
 .welcomDiv {
+  background-color: #05aff2;
   margin: 0px;
 }
 .welcome {
@@ -62,6 +63,7 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: #05aff2;
 }
 .card {
   display: flex;
