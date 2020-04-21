@@ -30,7 +30,6 @@ function AllEvents(props) {
             <section className="cards">
               <article
                 className="card_ card--1"
-                // style={{ backgroundImage: `url(${event.images[2].url})` }}
               >
                 <div className="card__info-hover">
                   <svg className="card__like" viewBox="0 0 24 24">

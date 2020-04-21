@@ -14,7 +14,6 @@ class HomePage extends React.Component {
         script.onload = () => {
           var myWidget = new HomePage({
               container: '#mycustom-container', // querySelector to the element that will contain the widget
-              
           });
         }
     }
