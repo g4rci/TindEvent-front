@@ -75,22 +75,25 @@ class GroupDetails extends Component {
     });
     const pending = this.state.pending.map((pend, i) => {
       return (
-        <div>
+        <div className="profile">
+        <div className="profileCard">
           <h5>{i + 1}: {pend.username}</h5>
           <button onClick={ () => this.handleAccept(pend)}>Aceptar</button>
           <button onClick={ () => this.handleDecline(pend._id)}>Rechazar</button>
         </div>
+        </div>
       );
     });
     return (
-      <div>
+      <div className="profile">
+      <div className="profileCard">
         <h1>Grupo</h1>
         <h6>{this.state.group.name}</h6>
         <h6>{this.state.creator}</h6>
         {this.state.users ? <div>{users}</div> : <h1>Loading</h1>}
         {this.state.pending ? <div>{pending}</div> : <h1>Loading</h1>}
         <h6>{this.state.group.bio}</h6>
-
+        </div> 
        
       </div>
     );

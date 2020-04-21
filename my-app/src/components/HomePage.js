@@ -19,7 +19,6 @@ class HomePage extends React.Component {
         }
     }
     render() {
-        console.log(process.env.REACT_APP_TICKETMASTERKEY)
         return (
             <div className="widget">
         
