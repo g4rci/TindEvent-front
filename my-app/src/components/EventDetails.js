@@ -25,7 +25,7 @@ class EventDetails extends Component {
     console.log("ESTE PARAMS", params);
     await axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
+        `http://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
       )
       .then((responseFromApi) => {
         const theEvent = responseFromApi.data._embedded.events[0];

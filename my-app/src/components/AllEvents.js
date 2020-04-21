@@ -11,7 +11,7 @@ function AllEvents(props) {
    console.log(props.user)
     await axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
+        `http://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
       )
       .then((responseFromApi) => {
         //console.log(responseFromApi.data)

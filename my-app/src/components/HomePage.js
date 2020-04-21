@@ -7,7 +7,7 @@ import css from "../index.css"
 class HomePage extends React.Component {
     componentDidMount() {
         const script = document.createElement("script");
-        script.src = "https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js";
+        script.src = "http://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js";
         script.async = true;
         script.defer = true;
         document.body.appendChild(script);
