@@ -8,10 +8,9 @@ function AllEvents(props) {
   const [listOfEvents, setListOfEvents] = useState([]);
 
   const getAllEvents = async () => {
-   console.log(props.user)
     await axios
       .get(
-        `http://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
+        `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
       )
       .then((responseFromApi) => {
         //console.log(responseFromApi.data)
