@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
 
 class Mygroups extends Component {
@@ -39,7 +38,6 @@ class Mygroups extends Component {
   };
   
   getSingleImage = async (id) => {
-      const { params } = this.props.match;
       await axios
         .get(
             `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${id}`
@@ -62,7 +60,6 @@ class Mygroups extends Component {
       <div className="groupsCard">
         <h1>GROUPS</h1>
         {this.state.groups.map((group, index) => {
-          {/* this.getSingleEvent(group.eventID) */}
           return (
             <div key={index}>
               <div className="flex-container">

@@ -297,10 +297,11 @@ html {
 }
 
 .title{
+  font-family:  "Monoton", cursive;
   margin-top: 0px;
   font-size: 30px;
   text-decoration: none;
-  color: #887431;
+  color: #ddc780;
 }
 .flex-container {
   display: flex;
