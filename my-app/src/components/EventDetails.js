@@ -22,7 +22,7 @@ class EventDetails extends Component {
 
   getSingleEvent = async () => {
     const { params } = this.props.match;
-    console.log("ESTE PARAMS", params);
+    
     await axios
       .get(
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${params.id}`
@@ -47,14 +47,14 @@ class EventDetails extends Component {
 
   getGroupEventID = async () => {
     const { params } = this.props.match;
-    console.log("Entrando en GetGroupEventID", params.id);
+    
     const groups = await axios.get(
       `${process.env.REACT_APP_API_URI}/groups/grouplist/${params.id}`
     );
     this.setState({
       groups: groups.data,
     });
-    console.log(groups);
+   
   };
 
   handleJoin = async (groupid) => {
