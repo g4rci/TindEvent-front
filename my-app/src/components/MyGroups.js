@@ -26,7 +26,6 @@ class Mygroups extends Component {
 
 
   handleDelete = (idGroup) => {
-    console.log("ID GROUP", idGroup);
     axios.put(
       `${process.env.REACT_APP_API_URI}/groups/${idGroup}/${this.props.user._id}/abandonar`,
       { withCredentials: true }
@@ -34,7 +33,6 @@ class Mygroups extends Component {
     const filterGroups = [...this.state.groups].filter((element) => {
       return element._id !== idGroup;
     });
-    console.log("Decline", filterGroups);
     this.setState({
       groups: filterGroups,
     });
