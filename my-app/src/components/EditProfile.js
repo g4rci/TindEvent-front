@@ -55,10 +55,10 @@ function EditProfile(props) {
           
         <label>Photo:</label>
           <input
-            type='file'
+            type='url'
             name='picture'
             alt='Profile picture'
-            //onChange={e => setPicture(e.target.value)}
+            onChange={e => setPicture(e.target.value)}
             />
           <br></br>
           <label>Username:</label>
