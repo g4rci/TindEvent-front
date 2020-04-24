@@ -1,9 +1,8 @@
-import React, { useState, useEffect, createRef }from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
 import service from '../api/services'
-//import {useDatepicker, useMonth, useDay} from '@datepicker-react/hooks'
 
 
 function EditProfile(props) {
@@ -26,6 +25,7 @@ function EditProfile(props) {
  
   useEffect( () => {
     getUserInfo()
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   
     // this method handles just the file upload

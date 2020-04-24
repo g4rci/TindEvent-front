@@ -37,8 +37,6 @@ class EventDetails extends Component {
           time: theEvent.dates.start.localTime,
           venue: theEvent._embedded.venues[0].city.name
         });
-
-        //console.log("caca", this.state.event.images[0].url);
       })
       .catch((err) => {
         console.log(err);

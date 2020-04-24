@@ -13,14 +13,14 @@ function AllEvents(props) {
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&countryCode=ES&city=${props.user.location}`
       )
       .then((responseFromApi) => {
-        //console.log(responseFromApi.data)
         setListOfEvents(responseFromApi.data._embedded.events);
       });
   };
 
   useEffect(function () {
     getAllEvents();
-  }, []);
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   return (
     <div className="eventsContainer">

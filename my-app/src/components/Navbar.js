@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import css from "../index.css";
+import "../index.css";
 
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div className="logo">
-        <Link to={"/home"} id="home-btn">
+        <Link to={"/"} id="home-btn">
           <nav>
-            <a>
+            
               <img src="./logo2.png" width="30" height="30" alt="" />
-            </a>
+            
           </nav>
         </Link>
         <p>TindEvent</p>
@@ -26,9 +26,11 @@ class Navbar extends Component {
               <Link to="/profile">
                 <button className="navbar-button">Profile</button>
               </Link>
+              <Link to="/">
               <button className="navbar-button" onClick={logout}>
                 Logout
               </button>
+              </Link>
             </>
           ) : (
             <>

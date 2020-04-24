@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: "http://localhost:4000/upload",
+  baseURL: ("http://localhost:4000/upload", `${process.env.REACT_APP_API_URI}/upload`)
   // withCredentials: true //
 });
 const errorHandler = (err) => {

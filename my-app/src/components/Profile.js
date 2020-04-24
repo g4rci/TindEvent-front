@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import axiosRequestFunctions from "../lib/auth-service";
 import axios from "axios";
 
 
@@ -18,13 +17,11 @@ class Profile extends Component {
 
   componentDidMount() {
     this.getUser();
-    //console.log(this.state);
   }
   getUser = async () => {
     const newestUser = await axios.get(
       `${process.env.REACT_APP_API_URI}/profile/${this.props.user._id}`
     );
-   // console.log("newestuser", newestUser.data);
     this.setState({
       picture: newestUser.data.picture,
       username: newestUser.data.username,
@@ -37,7 +34,7 @@ class Profile extends Component {
   };
 
   render() {
-    const { logout, isLoggedin } = this.props;
+    const { isLoggedin } = this.props;
     
 
     return (
@@ -47,7 +44,7 @@ class Profile extends Component {
             {!this.state.isLoading ? (
               <div>
                 <div className="profileCard">
-                <img src={this.state.picture} width="210px"/>
+                <img src={this.state.picture} width="210px" alt={this.state.username}/>
                 <p>{this.state.username}</p>
                 <p>{this.state.email}</p>
                 <p>{this.state.location}</p>

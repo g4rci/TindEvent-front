@@ -20,9 +20,6 @@ class Mygroups extends Component {
       `${process.env.REACT_APP_API_URI}/profile/${this.props.user._id}`
     );
     this.setState({ groups: myGroups.data.groups });
-    // const groupsList = this.state.groups.data.groups
-
-    // console.log("LA NUEVA LISTA DE GRUPOS", groupsList);
   };
 
   handleDelete = (idGroup) => {
@@ -44,16 +41,9 @@ class Mygroups extends Component {
         `https://app.ticketmaster.com/discovery/v2/events?apikey=${process.env.REACT_APP_TICKETMASTERKEY}&id=${id}`
       )
       .then((responseFromApi) => {
-        console.log(
-          "hola",
-          responseFromApi.data._embedded.events[0].images[0].url
-        );
-        // return responseFromApi.data._embedded.events[0].images[0].url
         this.setState({
           image: responseFromApi.data._embedded.events[0].images[1].url,
         });
-
-        //console.log("caca", this.state.event.images[0].url);
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +61,6 @@ class Mygroups extends Component {
                 <figure className="image-container">
                   <img
                     src="https://images.unsplash.com/photo-1557787163-1635e2efb160?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2552&q=80"
-                    /*{this.getSingleImage(group.enventID) ? this.getSingleImage(group.enventID) : this.state.image}{this.state.image}*/
                     className="image-prop"
                     alt=""
                   />
