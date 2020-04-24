@@ -1,68 +1,105 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TindEvent
+https://tindevent-mpm.web.app/home
+## Description
+TindEvent is an application that creates matches between registered users and nearby events.
+The aim is to help people share the best experiences and find the greatest companions to be with.
 
-## Available Scripts
+The project is built with MERN stack technologies and it leans on a backend API written in a server-side technology as Node, with a front-end single-page application written in React. 
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+-  **404:** The user can see a 404 page when trying to reach a page that does not exists.
+-  **Signup:** End user can sign up in the platform to be able to look for nearby events or create a new one and joining together with other interested people.
+-  **Login:** End user can login to the platform to display its own profile.
+-  **Logout:** End user can logout from the platform so no one else can use it.
+-  **My profile** The User can display and edit its profile details (e.g. Username, Email address, password, location, date of birth, profile picture and bio description).
+- **Search events** A page where the user can look for events to attend in ‘Group Mode’ or ‘Single Mode’.
+-  **My events** Here the users can display the events it will attend (in group or single mode).
+-  **My groups** The page shows a list of the groups the user has joined.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Client
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Routes
+```
+- Route |('/home')| home page with login/signup links
+- AnonRoute|('/login') | login page
+- AnonRoute|('/signup') | signup page
+- PrivateRoute|('/private')| private page 
+- PrivateRoute|('/profile') | user profile page
+- PrivateRoute|('/edit-profile') | edit user profile
 
-### `npm test`
+```
+## Components
+```
+Navbar
+HomePage
+AllEvents
+AnonRoute
+PrivateRoute
+EditProfile
+Profile
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Server
 
-### `npm run build`
+## Models
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+user={
+  username: {type: String, required: true},
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  birthDate: {type: String},
+  location: {type: String},
+  bio: {type: String},
+  picture: { type: String, default: "https://banner2.cleanpng.com/20180404/djw/kisspng-computer-icons-users-group-internet-forum-user-avatar-5ac45a991206f5.9866985115228176890738.jpg"},
+  groups:[{type: Schema.Types.ObjectID, ref: 'Group'}],
+  events:[{type: Schema.Types.ObjectId, ref:’‘Event’’’}],
+ {timestamps: true }
+}
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+group={
+  creator:{type: Schema.Types.ObjectID, ref: 'User'},
+    name: {type: String, required: true},
+    users: [{type: Schema.Types.ObjectID, ref: 'User'}],
+    pending: [{type: Schema.Types.ObjectID, ref: 'User'}],
+    eventID: {type: String},
+    bio: {type: String},
+ {timestamps: true }
+}
+```
+## Routes
+```
+POST| `/auth/signup`| signup form, link to login, navigate to homepage after signup|
+POST| `/auth/login` | login form, link to signup, navigate to homepage after login|
+POST| `/auth/logout`| navigate to homepage after logout |
+GET | `/auth/private`| signup form, link to login, navigate to homepage after signup|
+GET | `/auth/me`| signup form, link to login, navigate to homepage after signup|
+GET | `/profile/:id`| get user profile
+PUT | `/profile/:id/edit`| edit profile form
+POST| `/profile/:id/delete`| delete profile
+POST| `/group/create` | create e new group
+POST| `/group/:id/join`| user to join a group
+POST| `/group/:id/:idUser/accept`| group to accept user request to join
+POST| `/group/:id/delete`| delete group
+PUT | `/group/:id/edit`| edit group form
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Links
+```
 
-### `npm run eject`
+### Trello
+[Link url](https://trello.com/b/cLIT5T6A/tindevent)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Git
+URls for the project repo and deploy
+[Link Repo Server]()
+[Link Repo Client]()
+[Link Deploy]()
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Slides
+URls for the project presentation (slides)
+[Link Slides.com](https://docs.google.com/presentation/d/11ldQq5ILu4r-xTrKS9HiwltlZcXxJDyiRg7jwWUA6UY/edit#slide=id.g251d9112ad_1_0)
+```
