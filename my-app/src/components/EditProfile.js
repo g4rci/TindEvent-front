@@ -1,14 +1,13 @@
-import React, { useState, useEffect, createRef }from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 import { withAuth } from "../lib/AuthProvider";
-//import {useDatepicker, useMonth, useDay} from '@datepicker-react/hooks'
+import service from '../api/services'
 
 
 function EditProfile(props) {
   const [username, setUsername] = useState(props.user.username);
   const [email, setEmail] = useState(props.user.email);
-  // const [password, setPassword] = useState("");
   const [location, setLocation] = useState(props.user.location);
   const [bio, setBio] = useState(props.user.bio);
   const [picture, setPicture] = useState(props.user.picture);
@@ -23,23 +22,32 @@ function EditProfile(props) {
     setBirthDate(me.data.birthDate)
     setPicture(me.data.picture)  
   }
-
-  // const newBirthDate =(value) => {
-  //   var date = new Date(value);
-  //   setBirthDate(date.toISOString());
-  // } 
-
+ 
   useEffect( () => {
     getUserInfo()
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   
-  
-  const history = useHistory();
+    // this method handles just the file upload
+     function handleFileUpload (e) {
+      const uploadData = new FormData();
+      uploadData.append("picture", e.target.files[0]);
+      service
+        .handleUpload(uploadData)
+        .then((response) => {
+          setPicture(response.secure_url);
+        })
+        .catch((err) => {
+          console.log("Error while uploading the file: ", err);
+        });
+    };
+    
+    const history = useHistory();
   
   async function handleFormSubmit (event){
     event.preventDefault();
     try{
-      await axios.put(`${process.env.REACT_APP_API_URI}/profile/${props.user._id}/edit`, { picture, username, email, location, birthDate, bio })
+      await axios.put(`${process.env.REACT_APP_API_URI}/profile/${props.user._id}/edit`, { picture , username, email, location, birthDate, bio })
       history.push("/Profile")
       ;
     }
@@ -47,6 +55,7 @@ function EditProfile(props) {
       console.log(error)
     }
   }
+
   
   return (
         <div>
@@ -54,12 +63,20 @@ function EditProfile(props) {
         <form className="profileCard" onSubmit={e => handleFormSubmit(e)}>
           
         <label>Photo:</label>
+<<<<<<< HEAD
           <input
             type='url'
             name='picture'
             alt='Profile picture'
             onChange={e => setPicture(e.target.value)}
             />
+=======
+        <input 
+        type='file' 
+        name="picture"
+        onChange={e => handleFileUpload(e)} 
+        />
+>>>>>>> a60aa9fb407c15a267d2b5d685f7bf243eba23af
           <br></br>
           <label>Username:</label>
           <input

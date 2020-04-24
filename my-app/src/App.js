@@ -22,9 +22,9 @@ class App extends Component {
       <AuthProvider>
         <div className='container'>
           <Navbar />
-
+          
           <Switch>
-            <Route exact path='/home' component={HomePage} />
+            <Route exact path='/' component={HomePage} />
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <PrivateRoute exact path='/private' component={Private} />

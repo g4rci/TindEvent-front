@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "../lib/AuthProvider";
-import css from "../index.css"
 
 
 class HomePage extends React.Component {
@@ -11,11 +9,14 @@ class HomePage extends React.Component {
         script.async = true;
         script.defer = true;
         document.body.appendChild(script);
+<<<<<<< HEAD
         script.onload = () => {
           var myWidget = new HomePage({
               container: '#mycustom-container', // querySelector to the element that will contain the widget
           });
         }
+=======
+>>>>>>> a60aa9fb407c15a267d2b5d685f7bf243eba23af
     }
     render() {
         return (

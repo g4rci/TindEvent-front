@@ -51,7 +51,6 @@ class AuthProvider extends React.Component {
       .signup({ picture, username, email, password, location, birthDate, bio })
       .then((user) => {
         this.setState({ isLoggedin: true, user })
-        console.log("Nuestro Sign", user)
       })
       .catch(({ response }) => {
       

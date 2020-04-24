@@ -10,7 +10,7 @@ function AnonRoute({ component: Component, isLoggedin, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        !isLoggedin ? <Component {...props} /> : <Redirect to='/home' />
+        !isLoggedin ? <Component {...props} /> : <Redirect to='/' />
       }
     />
   );
